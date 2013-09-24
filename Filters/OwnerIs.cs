@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using NogginBox.OwnerQueries.Forms;
 using Orchard;
 using Orchard.ContentManagement;
@@ -32,24 +33,26 @@ namespace NogginBox.OwnerQueries.Filters
 
 		public void ApplyFilter(FilterContext context)
 		{
-			var user = _workContextAccessor.GetContext().CurrentUser;
-			if (user == null) return;
+			var userList = (String)context.State.Users;
+			if (userList == null) return;
+
+			var userIds = UsersFilterForms.GetUserIds(userList);
 
 			Action<IAliasFactory> selector = alias => alias.ContentPartRecord<CommonPartRecord>();
-			Action<IHqlExpressionFactory> filter = x => x.Eq("OwnerId", user.Id);
+			Action<IHqlExpressionFactory> filter = x => x.InG("OwnerId", userIds);
 			context.Query.Where(selector, filter);
 		}
 
 		public LocalizedString DisplayFilter(dynamic context)
 		{
-			string userName = Convert.ToString(context.State.UserNames);
+			var userNameList = UsersFilterForms.GetUserNames((String)context.State.Users);
 
-			if (String.IsNullOrEmpty(userName))
-			{
-				userName = "any user";
-			}
+			var users = (userNameList.Any())
+				            ? String.Join(", ", userNameList)
+				            : "any user";
 
-			return T("Content is owned by {0}", String.Join(", ", userName));
+
+			return T("Content is owned by {0}", users);
 		}
 	}
 }
