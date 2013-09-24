@@ -92,6 +92,8 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Compile Include="CurrentContentAccessor.cs" />
+    <Compile Include="Filters\OwnerIsCurrentAuthor.cs" />
     <Compile Include="Filters\OwnerIs.cs" />
     <Compile Include="Filters\OwnerIsLoggedInUser.cs" />
     <Compile Include="Forms\UsersFilterForms.cs" />
