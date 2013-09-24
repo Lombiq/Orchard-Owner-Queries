@@ -86,3 +86,5 @@ C:\Users\Richard\Garsonix\Clients\iSky\iSkyModule.Orchard1.7.1\src\Orchard.Web\M
 C:\Users\Richard\Garsonix\Clients\iSky\iSkyModule.Orchard1.7.1\src\Orchard.Web\Modules\NogginBox.OwnerQueries\bin\Orchard.Projections.pdb
 C:\Users\Richard\Garsonix\Clients\iSky\iSkyModule.Orchard1.7.1\src\Orchard.Web\Modules\NogginBox.OwnerQueries\bin\Orchard.Forms.pdb
 C:\Users\Richard\Garsonix\Clients\iSky\iSkyModule.Orchard1.7.1\src\Orchard.Web\Modules\NogginBox.OwnerQueries\bin\Orchard.Tokens.pdb
+C:\Users\Richard\Garsonix\Clients\iSky\iSkyModule.Orchard1.7.1\src\Orchard.Web\Modules\NogginBox.OwnerQueries\bin\Orchard.Users.dll
+C:\Users\Richard\Garsonix\Clients\iSky\iSkyModule.Orchard1.7.1\src\Orchard.Web\Modules\NogginBox.OwnerQueries\bin\Orchard.Users.pdb

@@ -85,11 +85,16 @@
       <Project>{5531e894-d259-45a3-aa61-26dbe720c1ce}</Project>
       <Name>Orchard.Projections</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Orchard.Users\Orchard.Users.csproj">
+      <Project>{79aed36e-abd0-4747-93d3-8722b042454b}</Project>
+      <Name>Orchard.Users</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Compile Include="Filters\OwnerIs.cs" />
     <Compile Include="Filters\OwnerIsLoggedInUser.cs" />
-    <Compile Include="Forms\TagMatchTypeForm.cs" />
+    <Compile Include="Forms\UsersFilterForms.cs" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

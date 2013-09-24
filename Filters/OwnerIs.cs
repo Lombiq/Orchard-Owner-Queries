@@ -1,4 +1,5 @@
 ﻿using System;
+using NogginBox.OwnerQueries.Forms;
 using Orchard;
 using Orchard.ContentManagement;
 using Orchard.Core.Common.Models;
@@ -9,11 +10,11 @@ using Orchard.Projections.Services;
 
 namespace NogginBox.OwnerQueries.Filters
 {
-	public class OwnerIsLoggedInUser : IFilterProvider
+	public class OwnerIs : IFilterProvider
 	{
 		private readonly IWorkContextAccessor _workContextAccessor;
 
-		public OwnerIsLoggedInUser(IWorkContextAccessor workContextAccessor)
+		public OwnerIs(IWorkContextAccessor workContextAccessor)
 		{
 			_workContextAccessor = workContextAccessor;
 		}
@@ -22,9 +23,10 @@ namespace NogginBox.OwnerQueries.Filters
 
 		public void Describe(DescribeFilterContext describe) {
 			describe.For("ContentOwner", T("Content Owner"), T("The owner of the content item"))
-				.Element("LoggedInUserOwnerMatch", T("Logged in user"), T("Is owned by logged in user"),
+				.Element("OwnerMatch", T("Specified user"), T("Is owned by the specified user"),
 					ApplyFilter,
-					context => T("Content is owned by logged in user")
+					(Func<dynamic, LocalizedString>)DisplayFilter,
+					UsersFilterForms.FormId
 				);
 		}
 
@@ -36,6 +38,18 @@ namespace NogginBox.OwnerQueries.Filters
 			Action<IAliasFactory> selector = alias => alias.ContentPartRecord<CommonPartRecord>();
 			Action<IHqlExpressionFactory> filter = x => x.Eq("OwnerId", user.Id);
 			context.Query.Where(selector, filter);
+		}
+
+		public LocalizedString DisplayFilter(dynamic context)
+		{
+			string userName = Convert.ToString(context.State.UserName);
+
+			if (String.IsNullOrEmpty(userName))
+			{
+				userName = "any user";
+			}
+
+			return T("Content is owned by {0}", String.Join(", ", userName));
 		}
 	}
 }
