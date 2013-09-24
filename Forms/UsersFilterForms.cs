@@ -35,35 +35,26 @@ namespace NogginBox.OwnerQueries.Forms
 					var f = Shape.Form(
 						Id: "SelectTags",
 						_Users: Shape.SelectList(
-							Id: "tagids", Name: "TagIds",
+							Id: "userNames", Name: "UserNames",
 							Title: T("Tags"),
 							Description: T("Select some users."),
 							Size: 10,
 							Multiple: true
-							),
-						_Exclusion: Shape.FieldSet(
-							_OperatorOneOf: Shape.Radio(
-								Id: "operator-is-one-of", Name: "Operator",
-								Title: T("Is one of"), Value: "0", Checked: true
-								),
-							_OperatorIsAllOf: Shape.Radio(
-								Id: "operator-is-all-of", Name: "Operator",
-								Title: T("Is all of"), Value: "1"
-								)
-							));
+							)
+						);
 
 					var users = _service.ContentManager.Query<UserPart, UserPartRecord>()
 					                    .Where(u => u.RegistrationStatus == UserStatus.Approved)
 					                    .List();
 					
 					foreach (var user in users) {
-						f._Users.Add(new SelectListItem { Value = user.Id.ToString(), Text = user.UserName });
+						f._Users.Add(new SelectListItem { Value = user.UserName, Text = user.UserName });
 					}
 
 					return f;
 				};
 
-			context.Form("SelectTags", form);
+			context.Form(FormId, form);
 
 		}
 	}

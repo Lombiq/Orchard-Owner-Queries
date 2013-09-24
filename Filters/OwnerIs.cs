@@ -42,7 +42,7 @@ namespace NogginBox.OwnerQueries.Filters
 
 		public LocalizedString DisplayFilter(dynamic context)
 		{
-			string userName = Convert.ToString(context.State.UserName);
+			string userName = Convert.ToString(context.State.UserNames);
 
 			if (String.IsNullOrEmpty(userName))
 			{
