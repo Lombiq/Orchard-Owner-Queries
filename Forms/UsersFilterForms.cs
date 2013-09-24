@@ -1,14 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text.RegularExpressions;
-using System.Web.Mvc;
-using Orchard;
+﻿using Orchard;
+using Orchard.ContentManagement;
 using Orchard.DisplayManagement;
 using Orchard.Events;
 using Orchard.Localization;
 using Orchard.Users.Models;
-using Orchard.ContentManagement;
+using System;
+using System.Collections.Generic;
+using System.Text.RegularExpressions;
+using System.Web.Mvc;
 
 namespace NogginBox.OwnerQueries.Forms
 {
@@ -62,15 +61,18 @@ namespace NogginBox.OwnerQueries.Forms
 
 		}
 
-		public static IList<String> GetUserIds(String userList) {
+		public static IList<String> GetUserIds(String userList)
+		{
 			return GetUserBits(userList, 1);
 		}
 
-		public static IList<String> GetUserNames(String userList) {
+		public static IList<String> GetUserNames(String userList)
+		{
 			return GetUserBits(userList, 2);
 		}
 
-		private static IList<String> GetUserBits(String userList, int place) {
+		private static IList<String> GetUserBits(String userList, int place)
+		{
 			var userBits = new List<String>();
 			var usersMatch = Regex.Matches(userList, @"\(u:\d+,n:'.*?'\),{0,1}");
 			for (var i = 0; i < usersMatch.Count; i++)

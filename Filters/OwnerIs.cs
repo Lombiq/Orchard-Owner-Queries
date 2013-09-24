@@ -1,32 +1,24 @@
-﻿using System;
-using System.Linq;
-using NogginBox.OwnerQueries.Forms;
-using Orchard;
+﻿using NogginBox.OwnerQueries.Forms;
 using Orchard.ContentManagement;
 using Orchard.Core.Common.Models;
 using Orchard.Localization;
 using Orchard.Projections.Descriptors.Filter;
 using Orchard.Projections.Services;
+using System;
+using System.Linq;
 
 
 namespace NogginBox.OwnerQueries.Filters
 {
 	public class OwnerIs : IFilterProvider
 	{
-		private readonly IWorkContextAccessor _workContextAccessor;
-
-		public OwnerIs(IWorkContextAccessor workContextAccessor)
-		{
-			_workContextAccessor = workContextAccessor;
-		}
-
 		public Localizer T { get; set; }
 
 		public void Describe(DescribeFilterContext describe) {
 			describe.For("ContentOwner", T("Content Owner"), T("The owner of the content item"))
 				.Element("OwnerMatch", T("Specified user"), T("Is owned by the specified user"),
 					ApplyFilter,
-					(Func<dynamic, LocalizedString>)DisplayFilter,
+					DisplayFilter,
 					UsersFilterForms.FormId
 				);
 		}
@@ -51,7 +43,6 @@ namespace NogginBox.OwnerQueries.Filters
 			var users = (userNameList.Any())
 				            ? String.Join(", ", userNameList)
 				            : "any user";
-
 
 			return T("Content is owned by {0}", users);
 		}
