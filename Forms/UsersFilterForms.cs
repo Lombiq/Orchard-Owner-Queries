@@ -52,7 +52,7 @@ namespace NogginBox.OwnerQueries.Forms
 					
 					foreach (var user in users)
 					{
-						f._Users.Add(new SelectListItem { Value = String.Format("{{u:{0},n:'{1}'}}",user.Id, user.UserName), Text = user.UserName});
+						f._Users.Add(new SelectListItem { Value = String.Format("(u:{0},n:'{1}')",user.Id, user.UserName), Text = user.UserName});
 					}
 
 					return f;
@@ -72,10 +72,10 @@ namespace NogginBox.OwnerQueries.Forms
 
 		private static IList<String> GetUserBits(String userList, int place) {
 			var userBits = new List<String>();
-			var usersMatch = Regex.Matches(userList, @"{u:\d+,n:'.*?'},{0,1}");
+			var usersMatch = Regex.Matches(userList, @"\(u:\d+,n:'.*?'\),{0,1}");
 			for (var i = 0; i < usersMatch.Count; i++)
 			{
-				var userMatch = Regex.Match(usersMatch[i].Value, @"{u:(\d+),n:'(.*?)'}");
+				var userMatch = Regex.Match(usersMatch[i].Value, @"\(u:(\d+),n:'(.*?)'\)");
 				userBits.Add(userMatch.Groups[place].Value);
 			}
 

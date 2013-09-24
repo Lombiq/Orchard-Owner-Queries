@@ -37,6 +37,7 @@ namespace NogginBox.OwnerQueries.Filters
 			if (userList == null) return;
 
 			var userIds = UsersFilterForms.GetUserIds(userList);
+			if (!userIds.Any()) return;
 
 			Action<IAliasFactory> selector = alias => alias.ContentPartRecord<CommonPartRecord>();
 			Action<IHqlExpressionFactory> filter = x => x.InG("OwnerId", userIds);
