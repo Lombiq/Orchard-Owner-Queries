@@ -92,7 +92,9 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Compile Include="CurrentContentAccessor.cs" />
+    <Compile Include="Accessors\ProfilePageUserAccessor.cs" />
+    <Compile Include="Accessors\CurrentContentAccessor.cs" />
+    <Compile Include="Filters\OwnerIsProfilePageUser.cs" />
     <Compile Include="Filters\OwnerIsCurrentAuthor.cs" />
     <Compile Include="Filters\OwnerIs.cs" />
     <Compile Include="Filters\OwnerIsLoggedInUser.cs" />

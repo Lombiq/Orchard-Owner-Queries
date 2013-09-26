@@ -1,4 +1,5 @@
 ﻿using System;
+using NogginBox.OwnerQueries.Accessors;
 using Orchard.ContentManagement;
 using Orchard.Core.Common.Models;
 using Orchard.Localization;
@@ -12,9 +13,9 @@ namespace NogginBox.OwnerQueries.Filters
 	{
 		private readonly ICurrentContentAccessor _currentContentAccessor;
 
-		public OwnerIsCurrentAuthor(ICurrentContentAccessor workContextAccessor)
+		public OwnerIsCurrentAuthor(ICurrentContentAccessor currentContentAccessor)
 		{
-			_currentContentAccessor = workContextAccessor;
+			_currentContentAccessor = currentContentAccessor;
 		}
 
 		public Localizer T { get; set; }

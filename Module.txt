@@ -7,5 +7,11 @@ OrchardVersion: 1.6
 Description: Description for the module
 Features:
 	NogginBox.OwnerQueries:
-		Description: Description for feature NogginBox.OwnerQueries.
+		Description: Query content based on it's owner.
+		Category: Query filters
 		Dependencies: Orchard.Projections
+	NogginBox.OwnerProfilePageQueries:
+		Name: Owner Profile Page Query
+		Description: Show a users content on their profile page using a projection widget.
+		Category: Query filters
+		Dependencies: Orchard.Projections, Contrib.Profile

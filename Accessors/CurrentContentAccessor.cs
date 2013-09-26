@@ -1,9 +1,9 @@
-﻿using System.Web.Routing;
-using Orchard;
+﻿using Orchard;
 using Orchard.ContentManagement;
 using Orchard.Core.Common.Utilities;
+using System.Web.Routing;
 
-namespace NogginBox.OwnerQueries
+namespace NogginBox.OwnerQueries.Accessors
 {
 	// Src: http://skywalkersoftwaredevelopment.net/blog/getting-the-current-content-item-in-orchard
 
@@ -11,7 +11,7 @@ namespace NogginBox.OwnerQueries
 	{
 		ContentItem CurrentContentItem { get; }
 	}
- 
+
 	public class CurrentContentAccessor : ICurrentContentAccessor
 	{
 		private readonly LazyField<ContentItem> _currentContentItemField = new LazyField<ContentItem>();
