@@ -38,7 +38,7 @@ namespace NogginBox.OwnerQueries.Forms
 						Id: "SelectTags",
 						_Users: Shape.SelectList(
 							Id: "users", Name: "Users",
-							Title: T("Tags"),
+							Title: T("Users"),
 							Description: T("Select some users."),
 							Size: 10,
 							Multiple: true
