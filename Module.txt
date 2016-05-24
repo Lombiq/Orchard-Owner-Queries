@@ -3,7 +3,7 @@ AntiForgery: enabled
 Author: Richard Garside - www.nogginbox.co.uk	
 Website: http://www.nogginbox.co.uk
 Version: 1.1
-OrchardVersion: 1.10
+OrchardVersion: 1.10.1
 Description: Extends the projections that are possible in Orchard by allowing you to query and filter content based on the owner of the content.
 Features:
 	NogginBox.OwnerQueries:
