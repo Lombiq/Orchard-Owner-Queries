@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Web.Routing;
 using Orchard;
-using Orchard.Core.Common.Utilities;
+using Orchard.ContentManagement.Utilities;
 using Orchard.Environment.Extensions;
 using Orchard.Security;
 
